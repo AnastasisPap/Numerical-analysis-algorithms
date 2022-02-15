@@ -3,8 +3,9 @@
 #### Root finding algorithms
 - Bisection method
 - Regula Falsi
-- Iterative method
+- Secant method
 - Newton-Raphson method
+- Aitken-Steffensen methods
 #### Interpolation
 - Newton-Gregory Interpolation
 - Lagrange Interpolation
