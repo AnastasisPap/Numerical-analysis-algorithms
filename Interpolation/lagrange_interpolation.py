@@ -19,10 +19,11 @@ def lagrange(f, values, degree = 10):
     return p
 
 def main():
-    x = [0, 1, 2, 3]
+    x, i = sp.symbols('x i')
+    values = [0, 1, 2, 3]
     f = [1, 2, 9, 28]
 
-    res = lagrange(f, x, 3)
+    res = lagrange(f, values, 3)
     display(res)
     
 
