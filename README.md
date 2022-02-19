@@ -10,14 +10,11 @@
 - Newton-Gregory Interpolation
 - Lagrange Interpolation
 - Newton Divided Differences Interpolation
-- Hermite Interpolation
-- Splines Interpolation
-- Bezier curves
 #### Numerical Integration
-- Richardson extrapolation
-- Newton Cotes
-- Gauss Integration
-- Romberg method
+- Simpson 1/3
+- Simpson 3/8
+- Monte Carlo integration
+- Trapezoidal rule
 #### Solutions to linear system using numerical methods
 - Gauss elimination
 - PLU factorization
