@@ -1,4 +1,4 @@
-from urllib.parse import ParseResultBytes
+import matplotlib.pyplot as plt
 import numpy as np
 import sympy as sp
 
@@ -30,11 +30,24 @@ def main():
     x = sp.symbols('x')
     f = x**4
     interval = [0, 1]
-
-    res = complex_trapezoid(f, interval, 1/4)
     real = sp.integrate(f, (x, interval[0], interval[1]))
-    print(res)
-    print(f'Error: {abs(real - res)}')
+    errors = []
+    h = []
+
+    for i in range(7 + 1):
+        res = complex_trapezoid(f, interval, 1/2**i)
+        h.append(2**i)
+        #print(res)
+        error = abs(real - res)
+        #print(f'Error: {error}')
+        errors.append(error)   
+
+    plt.title('Trapezoidal rule error')
+    plt.plot(h, errors, color='b')
+    plt.xlabel('Number of points')
+    plt.ylabel('Error')
+    plt.grid()
+    plt.show()
 
 
 if __name__ == '__main__':
