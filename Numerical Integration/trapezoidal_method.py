@@ -2,18 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import sympy as sp
 
-
-def simple_trapezoid(f, points):
-    x0, x1 = points
-    x = sp.symbols('x')
-    f0 = f.subs(x, x0)
-    f1 = f.subs(x, x1)
-    h = x1 - x0
-
-    return h * (f0 + f1) / 2
-
-
-def complex_trapezoid(f, interval, h):
+def trapezoid(f, interval, h):
     x = sp.symbols('x')
     x0, xn = interval
 
@@ -35,7 +24,7 @@ def main():
     h = []
 
     for i in range(7 + 1):
-        res = complex_trapezoid(f, interval, 1/2**i)
+        res = trapezoid(f, interval, 1/2**i)
         h.append(2**i)
         print(res)
         error = abs(real - res)
