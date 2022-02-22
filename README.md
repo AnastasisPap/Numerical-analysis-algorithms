@@ -23,4 +23,4 @@
 - Euler's method
 - Midpoint method
 
-# Applied theory learned from the class Computational Mathematics, AUEB
+## Applied theory learned from the class Computational Mathematics, AUEB
