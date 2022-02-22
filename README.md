@@ -22,3 +22,5 @@
 #### Solutions of differential equations with numerical methods
 - Euler's method
 - Midpoint method
+
+# Applied theory learned from the class Computational Mathematics, AUEB
