@@ -1,17 +1,15 @@
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
 
-
-def simple_euler(f, h, t, s0):
+def trapezoidal_rule(f, h, t, s0):
     n = len(t)
     s = np.zeros(n)
     s[0] = s0
 
     for i in range(n - 1):
-        s[i + 1] = s[i] + h * f(t[i], s[i])
+        s[i + 1] = s[i] + h * f(t[i] + h / 2, s[i] + (h / 2) * f(t[i], s[i]))
     
     return s
-
 
 def plot(t, s, F, h, i, axs):
     i -= 1
@@ -30,7 +28,7 @@ def main():
         h = 1/2**i
         t = np.linspace(0, 1, int(1/h) + 1)
 
-        s = simple_euler(f, h, t, -1)
+        s = trapezoidal_rule(f, h, t, -1)
 
         plot(t, s, F, h, i, axs)
     
