@@ -7,8 +7,7 @@ from pivoting_methods import *
 # pivotMethod:
 # 0 = normal elimination
 # 1 = partial pivoting
-# 2 = weighted partial pivoting
-# 3 = full pivoting
+# 2 = full pivoting
 def gauss_elimination(matrix, pivotMethod = 0):
     n, m = np.shape(matrix)
 
@@ -20,9 +19,9 @@ def gauss_elimination(matrix, pivotMethod = 0):
 
     for row in range(n):
         if pivotMethod == 1:
-            matrix = partialPivoting(matrix, row)
+            _, matrix = partialPivoting(matrix, row)
         elif pivotMethod == 2:
-            P, matrix = completePivoting(matrix, P, row)
+            P, matrix = completePivoting(matrix, row, P)
 
         if matrix[row][row] == 0:
             print('Dividing with 0')

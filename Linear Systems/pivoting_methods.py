@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def partialPivoting(matrix, row):
+def partialPivoting(matrix, row, P = None):
     n, m = np.shape(matrix)
     maxPivot = abs(matrix[row][row])
     maxPos = row
@@ -11,11 +11,13 @@ def partialPivoting(matrix, row):
             maxPivot = abs(matrix[i][row])
             maxPos = i
 
+    if P is not None:
+        P[[row, maxPos]] = P[[maxPos, row]]
     matrix[[row, maxPos]] = matrix[[maxPos, row]]
     
-    return matrix
+    return P, matrix
 
-def completePivoting(matrix, P, row):
+def completePivoting(matrix, row, P):
     maxPivot = abs(matrix[row][row])
     maxPos = (row, row)
     n, m = np.shape(matrix)
