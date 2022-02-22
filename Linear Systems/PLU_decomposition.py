@@ -26,7 +26,6 @@ def PLU(matrix, pivotMethod = 0):
     P = np.eye(n)
     L = np.eye(n)
     P1 = np.eye(n)
-    cnt = 0
     U = np.zeros((n, m))
 
     for row in range(n):
@@ -35,11 +34,9 @@ def PLU(matrix, pivotMethod = 0):
             P1, matrix = partialPivoting(matrix, row, np.eye(n))
         elif pivotMethod == 2:
             P1, matrix = completePivoting(matrix, row, np.eye(n), L)
-        
-        if not np.array_equal(P, P1):
-            cnt += 1
+
         P = np.dot(P1, P)
-        
+
         if matrix[row][row] == 0:
             print('Dividing with 0')
             return None, None, None
@@ -52,12 +49,15 @@ def PLU(matrix, pivotMethod = 0):
     
         matrix = np.dot(M, matrix)
 
-    return P, L, matrix, cnt
+    return P, L, matrix
 
-
-def det(P, U, cnt):
-    cnt = 0
+def det(P, U):
+    cnt = -1
     n, m = np.shape(P)
+
+    for i in range(n):
+        if P[i][i] != 1:
+            cnt += 1
 
     diagonal_mul = 1
     for i in range(n):
@@ -73,8 +73,9 @@ def main():
     ])
 
     b = np.array([7, 9, 9]).T
-    P, L, U, cnt = PLU(matrix, 1)
-    print(f'Determinant: {det(P, U, cnt)}')
+    P, L, U = PLU(matrix, 1)
+    print(P)
+    print(f'Determinant: {det(P, U)}')
 
 
 if __name__ == '__main__':
